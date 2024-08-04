@@ -1,10 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 
-import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword,onAuthStateChanged, } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword,  signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js";
 
-import { getFirestore, doc, addDoc, collection, query, where, getDocs, getDoc} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+import { getFirestore, doc, addDoc, collection, query, where, getDocs, getDoc, updateDoc, serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDSH5TdMEqmLuS17VzjIlkXU8Xn5MFAyDQ",
@@ -26,6 +26,7 @@ export{
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
+    signOut,
 
     storage,
     ref, 
@@ -40,4 +41,6 @@ export{
     where, 
     getDocs,
     getDoc,
+    updateDoc,
+    serverTimestamp,
 }

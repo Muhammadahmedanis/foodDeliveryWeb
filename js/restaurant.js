@@ -53,10 +53,10 @@ const getAllRestaurant = async() => {
             console.log(doc.id, " => ", doc.data());
             ind++;
             resturantList.innerHTML += `<tr>
-            <th scope="row">${ind}</th>
-            <td><img class="resLogoImg" src='${doc.data().img}' alt=""></td>
-            <td>${doc.data().name}</td>
-            <td>${doc.data().address}</td>
+            <th scope="row-2">${ind}</th>
+            <td scope="row-2"><img class="resLogoImg" src='${doc.data().img}' alt=""></td>
+            <td scope="row-4">${doc.data().name}</td>
+            <td scope="row-4">${doc.data().address}</td>
             </tr>`
         });
     }

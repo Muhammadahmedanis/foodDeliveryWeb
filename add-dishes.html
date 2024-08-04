@@ -19,7 +19,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav nav-underline ">
-                <li class="nav-item">
+                <li id="dashboard" class="nav-item">
                   <a class="nav-link" aria-current="page" href="dashboard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
@@ -29,12 +29,12 @@
                   <a class="nav-link active" href="add-dishes.html">Dishes</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Orders</a>
+                  <a class="nav-link" href="order.html">Orders</a>
                 </li>
               </ul>
             </ul>
             <div class="d-flex gap-2" role="search">
-              <a href="login.html"><button class="btn btn-outline-primary py-2" type="submit">Logout</button></a>
+              <a href="login.html"><button id="logoutBtn" class="btn btn-outline-primary py-2" type="submit">Logout</button></a>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
               <div class="modal-body">
                 <div class="mb-3">
                   <div class="mb-3">
-                    <label for="formFile" class="form-label">Dish image</label>
+                    <label class="form-label">Dish image</label>
                     <input class="form-control" type="file" id="dishImage">
                   </div>
                 </div>

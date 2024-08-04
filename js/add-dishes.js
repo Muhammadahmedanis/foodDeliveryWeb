@@ -12,14 +12,13 @@ const getAllRestaurant = async() => {
             resturantName.innerHTML += `<option value ='${doc.id}'> ${doc.data().name}</option>`
         });
     }
+    getAllDishes();
 
 }
-getAllRestaurant()
+getAllRestaurant();
 
 
 const getAllDishes = async() => {
-    // let spinner = document.querySelector(".spinner");
-    // spinner.style.display = "block";
     let ind = 0;
     const allDishes = document.getElementById("allDishes");
     const q = collection(db, "dishes");
@@ -40,7 +39,6 @@ const getAllDishes = async() => {
     });
 
 }
-getAllDishes()
 
 
 let Dish = async() => {
@@ -57,6 +55,7 @@ let Dish = async() => {
     const docSnap = await getDoc(resRef);
 
     const dishDetail = {
+        resId: resturantName.value,
         restaurant: docSnap.data().name ? docSnap.data().name: "name is not register",
         image,
         name: dishName.value,
