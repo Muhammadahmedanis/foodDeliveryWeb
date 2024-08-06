@@ -1,3 +1,6 @@
+body{
+    overflow: hidden;
+}
 .navbar{
     background-color: #fff;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .12), inset 0 -1px 0 0 #dadce0;
@@ -39,6 +42,9 @@
     /* padding: 8px; */
 }
 .social-icons{
+    display: flex;
+    gap: 6px;
+    margin-left: -16%;
     font-size: 28px;
     color: #f34137;
 }
@@ -69,7 +75,7 @@
     height: 200px;
     object-fit: cover;
 }
-#dashboard{
+.dashboard{
     display: none;
 }
 .spinner{
@@ -88,4 +94,24 @@
     font-weight: bolder;
     font-size: 21px;
     display: none;
+}
+
+@media (max-width: 600px) {
+    .dishImage{
+        width: auto;
+        height: 40px;
+    }
+    tr{
+        font-size: 15px;
+    }
+    th{
+        font-size: 11px;
+        font-weight: lighter;
+    }
+    .orderTable{
+        font-size: 8px;
+    }
+    .viewBtn{
+        font-size: 8px !important;
+    }
 }

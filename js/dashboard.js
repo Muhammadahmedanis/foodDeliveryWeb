@@ -11,25 +11,36 @@ import {collection, doc, db, getDocs} from './firebase.js'
 //     }
 //   });
 
-const q =  collection(db, "resturants");
-const querySnapshot = await getDocs(q);
-let i = 0;
-querySnapshot.forEach((doc) => {
-  i++;
-  console.log(doc.id, " => ", doc.data());
-});
-const q1 =  collection(db, "dishes");
-const querySnapshot2 = await getDocs(q1);
+let fetchCollectionData = async(collectionName) => {
+    const q = collection(db, collectionName);
+    const querySnapshot = await getDocs(q);
+    let count = 0;
+    querySnapshot.forEach((doc) => {
+      count++;
+      console.log(doc.id, " => ", doc.data());
+    });
+    return count;
+  }
+  
+let displayCounts = async () => {
+const totalRestaurants = await fetchCollectionData("resturants");
+const totalDishes = await fetchCollectionData("dishes");
+const totalOrders  = await fetchCollectionData("orders");
 
-let j = 0;
-querySnapshot2.forEach((doc) => {
-  j++;
-  console.log(doc.id, " => ", doc.data());
-});
-console.log(j);
 let totalRes = document.getElementById("totalRes");
 let totalDish = document.getElementById("totalDish");
-if(totalRes || totalDish){
-  totalRes.innerHTML = i;
-  totalDish.innerHTML = j;
+let totalOrder = document.getElementById("totalOrder");
+
+    if (totalRes) {
+        totalRes.innerHTML = totalRestaurants;
+    }
+    if (totalDish) {
+        totalDish.innerHTML = totalDishes;
+    }
+    if(totalOrder){
+        totalOrder.innerHTML = totalOrders;
+    }
 }
+  
+// Call the function to execute
+displayCounts();

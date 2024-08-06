@@ -71,16 +71,17 @@ const getAllOrder = async() => {
         }
         if(allOrder){
             allOrder.innerHTML = '';
-            allOrder.innerHTML += ` <tr>
+            allOrder.innerHTML += ` <tr class="orderTable text-center">
             <th scope="row">${ind}</th>
-            <td>${doc.data().customerName}</td>
-            <td>${doc.data().customerNumber}</td>
-            <td>${doc.data().customerAddress}</td>
-            <td><span class="badge ${statusColor}">${doc.data().status}</span></td>
-            <td>${doc.data().totalAmount}</td>
-            <td><button onClick = "viewOrderDetails('${doc.id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <td scope="col-2 col-lg-3">${doc.data().customerName}</td>
+            <td scope="col-3 col-lg-3">${doc.data().customerNumber}</td>
+            <td scope="col-3 col-lg-3">${doc.data().customerAddress}</td>
+            <td scope="col-2"><span class="badge ${statusColor}">${doc.data().status}</span></td>
+            <td scope="col-2">${doc.data().totalAmount}</td>
+            <td scope="col-3"><button onClick = "viewOrderDetails('${doc.id}')" type="button" class="viewBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             View details </button></td>
-            </tr>`
+            </tr>
+            `
             // console.log(typeof(doc.id);
         }
     })

@@ -1,6 +1,5 @@
 import {auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, db, collection, getDocs, onAuthStateChanged, signOut} from './js/firebase.js'
 
-let dashboard = document.getElementById("dashboard");
 let login = () => {
     let loginEmail = document.getElementById("loginEmail");
     let loginPassword = document.getElementById("loginPassword");
@@ -9,13 +8,11 @@ let login = () => {
         const user = userCredential.user;
         if(user.email === "admin@gmail.com"){
             location.href = "dashboard.html";
-            dashboard.style.display = "flex";
             console.log("login:-",  user);
         }
         else{
             location.href = "index.html";
         }
-        // dashboard.style.display = "";
     })
     .catch((error) => {
         console.log(error);
@@ -26,7 +23,7 @@ let login = () => {
 let logout = () => {
     signOut(auth).then(() => {
         console.log("Sign-out successful");
-        location.href = "index.html";
+        location.href = "login.html";
       }).catch((error) => {
         console.log("error in logout");
       });
@@ -50,7 +47,8 @@ const getAllRestaurant = async() => {
     homeResList.innerHTML = '';
     querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
-            homeResList.innerHTML += `<div class="col-3">
+        homeResList.innerHTML += `
+            <div class="col-12 col-lg-3 col-md-4 gap-3 justify-content-center align-items-center ms-5 py-2">
             <div class="card" style="width: 18rem;">
             <img src= '${doc.data().img}' class="card-img-top" alt="...">
             <div class="card-body">
@@ -89,15 +87,18 @@ let Register = () => {
 let register = document.getElementById("register");
 register && register.addEventListener("click", Register)
 
+let dashboard = document.querySelector(".dashboard");
 let registerBtn = document.getElementById("registerBtn");
 let name = document.getElementById("name");
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log(user);
         getAllRestaurant();
-        // if(registerBtn)
-        if(name || registerBtn){
+        if(user.email === "admin@gmail.com" && dashboard){
+            dashboard.classList.add("d-flex")
+        }
         registerBtn.style.display = "none";
+        if(name){
             name.style.display = "block";
             name.innerHTML = user.email.slice(0,1).toUpperCase();
         }

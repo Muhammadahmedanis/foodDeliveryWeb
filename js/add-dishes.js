@@ -28,7 +28,7 @@ const getAllDishes = async() => {
         console.log(doc.id, " => ", doc.data());
         ind++;
     allDishes.innerHTML += ` 
-        <tr>
+        <tr class="text-center">
             <th scope="row">${ind}</th>
             <td><img class="dishImage" src='${doc.data().image}' alt=""></td>
             <td>${doc.data().name}</td>

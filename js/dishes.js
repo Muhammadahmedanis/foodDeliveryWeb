@@ -36,7 +36,7 @@ const getAllDishes = async () => {
             allDishes.push({...doc.data(), id: doc.id});
         // console.log(doc.id, " => ", doc.data());
         cartDishes.innerHTML += `
-        <div class="card-body d-flex align-items-center justify-content-between">
+        <div class="card-body d-flex flex-wrap align-items-center justify-content-between">
         <div class="d-flex">
             <img class="rounded" width="150" src=${doc.data().image} alt="">
             <div class="ps-4">
@@ -45,11 +45,11 @@ const getAllDishes = async () => {
             <p class="card-text">${doc.data().serving}</p>
             </div>
         </div>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center gap-2 py-2">
         <button onclick = "updQty('-', '${doc.id}')" class="qtyBtn"><i class="fa-solid fa-minus"></i></button>
         <span class="fw-bold" id= ${doc.id}>1</span>
         <button onclick ="updQty('+', '${doc.id}')" class="qtyBtn"><i class="fa-solid fa-plus"></i></button>
-        <a class="btn btn-primary py-2" onclick="addToCart('${doc.id}')" >Add to cart</a>
+        <a class="btn btn-primary py-2" onclick="addToCart('${doc.id}')" ><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
         </div>`;
         });
