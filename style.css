@@ -96,22 +96,40 @@ body{
     display: none;
 }
 
-@media (max-width: 600px) {
+
+.table-responsive {
+    overflow-x: auto;
+}
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+@media (max-width: 660px) {
+    th{
+        font-size: 13px;
+        font-weight: 650;
+    }
+    .viewBtn{
+        width: 100px;
+        font-size: 11px !important;
+    }
+/* 
     .dishImage{
         width: auto;
         height: 40px;
     }
-    tr{
-        font-size: 15px;
-    }
     th{
         font-size: 11px;
-        font-weight: lighter;
     }
     .orderTable{
         font-size: 8px;
     }
-    .viewBtn{
-        font-size: 8px !important;
-    }
-}
+    */
+} 

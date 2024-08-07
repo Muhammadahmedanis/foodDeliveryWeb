@@ -67,7 +67,7 @@ const getAllRestaurant = async() => {
             spinner.style.display = "none";
         }
 }
-// getAllRestaurant()
+getAllRestaurant()
 
 let registerEmail = document.getElementById("registerEmail");
 let registerPassword = document.getElementById("registerPassword");
@@ -91,9 +91,9 @@ let dashboard = document.querySelector(".dashboard");
 let registerBtn = document.getElementById("registerBtn");
 let name = document.getElementById("name");
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log(user);
+    if (user || location.pathname === "/") {
         getAllRestaurant();
+        console.log(user);
         if(user.email === "admin@gmail.com" && dashboard){
             dashboard.classList.add("d-flex")
         }
