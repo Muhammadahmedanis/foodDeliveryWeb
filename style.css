@@ -1,6 +1,3 @@
-body{
-    overflow: hidden;
-}
 .navbar{
     background-color: #fff;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .12), inset 0 -1px 0 0 #dadce0;
@@ -8,6 +5,9 @@ body{
 .btn-primary{
     background-color: #00a751;
     border-color: #00a751;
+}
+a{
+    text-decoration: none !important;
 }
 .btn-primary:hover{
     background-color: #00a751;
@@ -133,3 +133,6 @@ body{
     }
     */
 } 
+#loginBtn{
+    display: none;
+}

@@ -50,7 +50,7 @@ const getAllRestaurant = async() => {
     querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
         homeResList.innerHTML += `
-            <div class="col-12 col-lg-3 col-md-4 gap-3 justify-content-center align-items-center ms-5 py-2">
+            <div class="my-3">
             <div class="card" style="width: 18rem;">
             <img src= '${doc.data().img}' class="card-img-top" alt="...">
             <div class="card-body">
@@ -94,13 +94,16 @@ let registerBtn = document.getElementById("registerBtn");
 onAuthStateChanged(auth, (user) => {
     if (user || location.pathname === "/") {
         getAllRestaurant();
-        console.log(user);
         if(user.email === "admin@gmail.com" && dashboard){
             dashboard.classList.add("d-flex")
         }
         if(registerBtn){
             registerBtn.style.display = "none";
         }
+        if(loginBtn){
+            loginBtn.style.display = "block";
+        }
+        console.log(user);
         if(name){
             name.style.display = "block";
             name.innerHTML = user.email.slice(0,1).toUpperCase();
