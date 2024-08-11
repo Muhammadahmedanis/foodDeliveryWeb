@@ -58,6 +58,8 @@ const getAllOrder = async() => {
     let ind = 0;
     const q = collection(db, "orders");
     const querySnapshot = await getDocs(q);
+    if(allOrder){
+        allOrder.innerHTML = '';
     querySnapshot.forEach((doc) => {
         ind++;
         console.log("order",doc.data());
@@ -69,8 +71,6 @@ const getAllOrder = async() => {
         if(status === "delivered"){
             statusColor = "text-bg-success"
         }
-        if(allOrder){
-            allOrder.innerHTML = '';
             allOrder.innerHTML += ` <tr class="orderTable text-center">
             <th scope="row">${ind}</th>
             <td scope="col-2 col-lg-3">${doc.data().customerName}</td>
@@ -83,8 +83,8 @@ const getAllOrder = async() => {
             </tr>
             `
             // console.log(typeof(doc.id);
-        }
-    })
+        })
+    }
     if(spinner || mainContent){
         spinner.style.display = "none";
         mainContent.style.display = "block";

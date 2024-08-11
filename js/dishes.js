@@ -53,9 +53,6 @@ const getAllDishes = async () => {
         </div>
         </div>`;
         });
-    // }else {
-    //     alert("no dish add")
-    // }
     } catch (error) {
         console.error("Error fetching documents: ", error);
    }

@@ -1,4 +1,5 @@
 import {auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, db, collection, getDocs, onAuthStateChanged, signOut} from './js/firebase.js'
+let name = document.getElementById("name");
 
 let login = () => {
     let loginEmail = document.getElementById("loginEmail");
@@ -24,6 +25,7 @@ let logout = () => {
     signOut(auth).then(() => {
         console.log("Sign-out successful");
         location.href = "login.html";
+        name.style.display = "none";
       }).catch((error) => {
         console.log("error in logout");
       });
@@ -89,7 +91,6 @@ register && register.addEventListener("click", Register)
 
 let dashboard = document.querySelector(".dashboard");
 let registerBtn = document.getElementById("registerBtn");
-let name = document.getElementById("name");
 onAuthStateChanged(auth, (user) => {
     if (user || location.pathname === "/") {
         getAllRestaurant();
@@ -97,7 +98,9 @@ onAuthStateChanged(auth, (user) => {
         if(user.email === "admin@gmail.com" && dashboard){
             dashboard.classList.add("d-flex")
         }
-        registerBtn.style.display = "none";
+        if(registerBtn){
+            registerBtn.style.display = "none";
+        }
         if(name){
             name.style.display = "block";
             name.innerHTML = user.email.slice(0,1).toUpperCase();
